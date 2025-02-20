@@ -12,6 +12,10 @@ def create_user():
     data = request.json
     username = data.get('username')
     password = data.get('password')
+    already_exists = User.query.filter_by(username=username).first()
+
+    if already_exists:
+        return jsonify({'message': 'Esse nome de usuário já está em utilização'}), 400
 
     if username and password:
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')

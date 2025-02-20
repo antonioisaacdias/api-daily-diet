@@ -3,6 +3,7 @@ from database import db
 from models.user import User
 from routes.auth import auth_bp
 from routes.user import user_bp
+from routes.diet import diet_bp
 from config import Config
 from flask_login import LoginManager
 
@@ -17,6 +18,7 @@ login_manager.login_view = 'auth.login'
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(user_bp)
+app.register_blueprint(diet_bp)
 
 @login_manager.user_loader
 def load_user(user_id):

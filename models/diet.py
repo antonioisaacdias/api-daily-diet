@@ -13,3 +13,12 @@ class Diet(db.Model):
 
     user = db.relationship('User', backref='diets')
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'date_time': self.date_time.isoformat(),
+            'is_healthy': self.is_healthy,
+            'user_id': self.user_id
+        }

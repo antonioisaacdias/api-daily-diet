@@ -1,6 +1,7 @@
 from database import db
 from uuid import uuid4
 
+
 class Diet(db.Model):
     __tablename__ = 'diets'
 
@@ -18,7 +19,7 @@ class Diet(db.Model):
             'id': self.id,
             'name': self.name,
             'description': self.description,
-            'date_time': self.date_time.isoformat(),
+            'date_time': self.date_time.strftime('%Y-%m-%dT%H:%M:%S'),
             'is_healthy': self.is_healthy,
             'user_id': self.user_id
         }
